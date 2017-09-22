@@ -1,0 +1,3 @@
+smv.dataDir = /home/kai/checkout/kai/holdem-flop-eqcalc/data
+smv.stages = com.sorrentocorp.holdem
+smv.class_server.class_dir = ./target/scala-2.11/classes
