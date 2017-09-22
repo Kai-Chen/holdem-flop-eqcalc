@@ -40,11 +40,21 @@ val smvInit = if (sys.props.contains("smvInit")) {
 } else ""
 
 initialCommands in console := s"""
+import com.sorrentocorp.cards._
+import com.sorrentocorp.poker._, ShellFun._
+import com.sorrentocorp.holdem._
+import Calculator._, Range._, HandCategorizer._
+import scala.language.postfixOps
+
 import org.apache.spark.sql.SparkSession
 import org.tresamigos.smv._
 val spark = SparkSession.builder().master("local").appName("spock runner").getOrCreate()
 SmvApp.init(Array("-m", "None"), Option(spark))
 ${smvInit}
+
+val app = SmvApp.app
+val r1 = FlopEquity.generate(spark, "Js-8s-3c")
+val hole = app.runModuleByName(input.HoleCards.fqn)
 """
 
 // clean up spark context
