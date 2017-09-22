@@ -1,0 +1,5 @@
+@delimiter = ,
+@has-header = false
+@quote-char = "
+id: Integer
+cards: String
